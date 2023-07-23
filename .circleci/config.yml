@@ -3,6 +3,7 @@ orbs:
   docker: circleci/docker@2.2.0
 jobs:
   build-and-push:
+    resource_class: small
     executor: docker/docker
     steps:
       - setup_remote_docker
