@@ -1,21 +1,17 @@
 version: 2.1
-jobs:
-  say-hello:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Say hello!"
-          command: "echo Hello, world"
-  say-hi:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run: echo "Hi there!"      
+orbs:
+  docker: circleci/docker@2.2.0
 workflows:
-  say-hello-workflow:
+  build-docker-image-only:
     jobs:
-      - say-hello
-      - say-hi
+      - docker/publish:
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          update-description: true
+  build-docker-image-only-with-buildkit:
+    jobs:
+      - docker/publish:
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          remote-docker-version: 20.10.12
+          update-description: true
+          use-buildkit: true
+          use-remote-docker: true
