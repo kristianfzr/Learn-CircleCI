@@ -15,7 +15,6 @@ jobs:
       - docker/check
       - docker/build:
           image: kkristian/orb-test
-          context: .
       - restore_cache:
           key: docker-layers-{{ checksum "Dockerfile" }}
       - docker/push:
