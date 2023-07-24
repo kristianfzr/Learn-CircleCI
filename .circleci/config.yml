@@ -1,9 +1,11 @@
 version: 2.1
 orbs:
   docker: circleci/docker@2.2.0
+
+# Jobs
 jobs:
   build-and-push:
-    resource_class: small
+    resource_class: medium
     executor: docker/docker
     steps:
       - setup_remote_docker
@@ -30,6 +32,8 @@ jobs:
       - run:
           command: |
             echo "$PRACTICE_VARIABLE"
+
+# Workflows
 workflows:
   commit:
     jobs:
