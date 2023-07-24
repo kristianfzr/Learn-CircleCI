@@ -5,6 +5,7 @@ jobs:
   build-and-push:
     resource_class: small
     executor: docker/docker
+    working_directory: ~/project
     steps:
       - setup_remote_docker
       - save_cache:

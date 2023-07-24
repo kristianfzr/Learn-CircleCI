@@ -10,9 +10,6 @@ COPY ./nodejs-app/package*.json ./
 # Install app dependencies
 RUN npm install
 
-# Copy Dockerfile to the working directory
-COPY ./Dockerfile ./
-
 # Copy all app files to the container's working directory
 COPY ./nodejs-app .
 
