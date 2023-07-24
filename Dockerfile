@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy all app files to the container's working directory
-COPY . .
+COPY ./nodejs-app .
 
 # Expose the port the app listens on (make sure it matches the port in your app.js file)
 EXPOSE 3000
