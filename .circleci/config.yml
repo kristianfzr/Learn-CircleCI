@@ -5,7 +5,6 @@ jobs:
   build-and-push:
     resource_class: small
     executor: docker/docker
-    working_directory: ~/project
     steps:
       - setup_remote_docker
       - save_cache:
@@ -16,6 +15,7 @@ jobs:
       - docker/check
       - docker/build:
           image: kkristian/orb-test
+          context: .
       - restore_cache:
           key: docker-layers-{{ checksum "Dockerfile" }}
       - docker/push:
