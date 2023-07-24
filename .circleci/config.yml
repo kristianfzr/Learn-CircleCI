@@ -17,6 +17,9 @@ jobs:
       - run:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
+      - run:
+          command: |
+            echo "$PRACTICE_VARIABLE"
 workflows:
   commit:
     jobs:
